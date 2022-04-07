@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_other.c                                  :+:      :+:    :+:   */
+/*   ft_printf_num.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 21:04:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/08 00:28:45 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/04/08 00:48:12 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_pointer(va_list ap)
+int	ft_printf_decimal(va_list ap)
 {
-	long long	addr;
-	int			i;
-	char		addr_hex[16];
-	int			ret;
-
-	addr = (long long)va_arg(ap, void *);
-	i = HEX_SIZE;
-	while (addr > 0)
+	int	ret;
+	int	n;
+	
+	ret = 0;
+	n = va_arg(ap, int);
+	ft_putnbr_fd(n, 1);	
+	if (n == -2147483648)
+		return (11);
+	if (n < 0)
 	{
-		addr_hex[--i] = HEX[addr % HEX_SIZE];
-		addr /= HEX_SIZE; 
+		ret++;
+		n = -n;
 	}
-	ret = write(1, "0x", 2);
-	while (i < HEX_SIZE)
+	while (n > 0)
 	{
-		ret += write(1, &addr_hex[i], 1);
-		i++;
+		ret++;
+		n /= 10;
 	}
 	return (ret);
 }

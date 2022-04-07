@@ -15,3 +15,9 @@
 
 # Header
 *.gch
+
+# Tester
+pft/
+
+# Swap
+*.swp
