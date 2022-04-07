@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/06 00:01:29 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/07 21:37:39 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	select_specifier(char spec, va_list ap)
 		ret = ft_printf_char(ap);
 	else if (spec == 's')
 		ret = ft_printf_string(ap);
+	else if (spec == 'p')
+		ret = ft_printf_pointer(ap);
 	return (ret);	
 }
 
@@ -48,5 +50,10 @@ int	ft_printf(const char *format, ...)
 
 int	main()
 {
-	ft_printf("%s\n", "abcd");
+	char	*str = "abcd";
+	int ret;
+	ret = printf("printf : %p\n", str);
+	printf("ret : %d\n", ret);
+	ret = ft_printf("ft_printf : %p\n", str);
+	printf("ret : %d\n", ret);
 }
