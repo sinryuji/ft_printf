@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/08 00:42:47 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/08 21:44:56 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	ft_printf_pointer(va_list ap);
 
 // ft_printf_num,c
 int	ft_printf_decimal(va_list ap);
+int	ft_printf_unsigned(va_list ap);
 
 #endif
