@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/08 22:08:27 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/08 23:27:47 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	select_specifier(char spec, va_list ap)
 		ret = ft_printf_decimal(ap);
 	else if (spec == 'u')
 		ret = ft_printf_unsigned(ap);
+	else if (spec == 'x' || spec == 'X')
+		ret = ft_printf_hexa(ap, spec);
 	return (ret);
 }
 
@@ -56,8 +58,8 @@ int	main()
 {
 	//char	*str = "abcd";
 	int ret;
-	ret = printf("printf : %ld\n", 4294967294);
+	ret = printf("printf : %X\n", -1);
 	printf("ret : %d\n", ret);
-	ret = ft_printf("ft_printf : %u\n", 4294967294);
-	printf("ret : %d\n", ret);
+	ret = ft_printf("ft_printf : %X\n", -1);
+	ft_printf("ret : %d\n", ret);
 }
