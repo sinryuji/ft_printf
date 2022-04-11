@@ -6,13 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/10 01:45:44 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/11 13:37:08 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	select_specifier(char spec, va_list ap)
+int	select_specifier(char spec, va_list *ap)
 {
 	int	ret;
 
@@ -46,7 +46,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			ret += select_specifier(*format, ap);
+			ret += select_specifier(*format, &ap);
 		}
 		else
 			ret += write(1, format, 1);
@@ -56,12 +56,12 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int	main()
-{
-	//char	*str = "abcd";
-	int ret;
-	ret = printf("printf : %%\n");
-	printf("ret : %d\n", ret);
-	ret = ft_printf("ft_printf : %%\n");
-	ft_printf("ret : %d\n", ret);
-}
+//int	main()
+//{
+//	//char	*str = "abcd";
+//	int ret;
+//	ret = printf("printf : %%\n");
+//	printf("ret : %d\n", ret);
+//	ret = ft_printf("ft_printf : %%\n");
+//	ft_printf("ret : %d\n", ret);
+//}
