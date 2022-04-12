@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/11 13:37:08 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:02:18 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			ret += ft_printf_width(&format);
 			ret += select_specifier(*format, &ap);
 		}
 		else

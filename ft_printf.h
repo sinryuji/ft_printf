@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/11 13:36:08 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:55:14 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,23 @@
 # define HEX_UPPER "0123456789ABCDEF"
 # define HEX_SIZE 16
 
-// ft_printf.c
+/* ft_printf.c */
 int	ft_printf(const char *format, ...);
 int	select_specifier(char spec, va_list *ap);
 
-// ft_printf_char.c
+/* ft_printf_char.c */
 int	ft_printf_char(va_list *ap);
 int	ft_printf_string(va_list *ap);
 
-// ft_printf_other.c
+/* ft_printf_other.c */
 int	ft_printf_pointer(va_list *ap);
 
-// ft_printf_num,c
+/* ft_printf_num,c */
 int	ft_printf_decimal(va_list *ap);
 int	ft_printf_unsigned(va_list *ap);
 int	ft_printf_hexa(va_list *ap, char spec);
+
+/* ft_printf_width.c */
+int	ft_printf_width(char **format);
 
 #endif
