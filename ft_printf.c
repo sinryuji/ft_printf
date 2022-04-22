@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/12 20:02:18 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:27:12 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			ret += ft_printf_width(&format);
+			ret += ft_printf_width((char **)&format);
 			ret += select_specifier(*format, &ap);
 		}
 		else
@@ -57,12 +57,9 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-//int	main()
-//{
-//	//char	*str = "abcd";
-//	int ret;
-//	ret = printf("printf : %%\n");
-//	printf("ret : %d\n", ret);
-//	ret = ft_printf("ft_printf : %%\n");
-//	ft_printf("ret : %d\n", ret);
-//}
+int	main()
+{
+	char	*str = "abcd";
+	printf("printf :%2s\n", str);
+	ft_printf("ft_printf :%2s\n", str);
+}

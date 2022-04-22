@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 19:42:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/12 20:07:12 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:02:14 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_printf_width(char **format)
 	}
 	while (n)
 	{
-		*format++;
+		(*format)++;
 		n /= 10;
 	}
 	return (ret);
