@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 19:42:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/22 15:02:14 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:02:10 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_printf_width(char **format)
 	int	n;
 	int	i;
 	int	ret;
-
+	
 	if (**format < '0' || **format > '9')
 		return (0);
 	n = ft_atoi(*format);
