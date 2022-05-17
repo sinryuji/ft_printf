@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/25 12:56:27 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:39:35 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_printf(const char *format, ...)
 
 int	main()
 {
-	char	*str = "abcd";
-	printf("printf :%5s\n", str);
-	ft_printf("ft_printf :%5s\n", str);
+	char	*str = NULL;
+	printf("printf :%p\n", &str);
+	ft_printf("ft_printf :%p\n", &str);
 }

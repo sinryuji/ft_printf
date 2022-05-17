@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/11 13:36:51 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:22:32 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	ft_printf_decimal(va_list *ap)
 {
 	int	ret;
 	int	n;
-	
+
 	ret = 0;
 	n = va_arg(*ap, int);
-	ft_putnbr_fd(n, 1);	
+	ft_putnbr_fd(n, 1);
 	if (n == -2147483648)
 		return (11);
 	if (n < 0)
@@ -27,6 +27,8 @@ int	ft_printf_decimal(va_list *ap)
 		ret++;
 		n = -n;
 	}
+	if (!n)
+		return (1);
 	while (n)
 	{
 		ret++;
@@ -73,6 +75,8 @@ int	ft_printf_hexa(va_list *ap, char spec)
 	n = va_arg(*ap, unsigned int);
 	i = 8;
 	ret = 0;
+	if (!n)
+		return (write(1, "0", 1));
 	while (n)
 	{
 		if (spec == 'x')
@@ -86,5 +90,5 @@ int	ft_printf_hexa(va_list *ap, char spec)
 		ret += write(1, &hex[i], 1);
 		i++;
 	}
-	return (ret);	
+	return (ret);
 }

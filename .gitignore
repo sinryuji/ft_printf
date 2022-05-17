@@ -18,6 +18,8 @@
 
 # Tester
 pft/
+ft_printf_tester/
+printfTester/
 
 # Swap
 *.swp

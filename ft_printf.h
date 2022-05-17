@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/04/22 15:16:34 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:18:07 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # define HEX_LOWER "0123456789abcdef"
 # define HEX_UPPER "0123456789ABCDEF"
 # define HEX_SIZE 16
+
+typedef struct s_flag
+{
+	int	width;
+}	t_flag;
 
 /* ft_printf.c */
 int	ft_printf(const char *format, ...);
