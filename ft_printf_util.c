@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_width.c                                  :+:      :+:    :+:   */
+/*   ft_printf_util.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 19:42:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/25 15:48:35 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/05/25 16:42:22 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/05/25 16:48:37 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_width(char **format)
+int	check_specifier(char spec)
 {
-	int	n;
-	int	i;
-	int	ret;
-
-	n = ft_atoi(*format);
-	i = 0;
-	ret = 0;
-	if (**format < '0' || **format > '9')
-		return (0);
-	while (i < n)
-	{
-		ret += write(1, " ", 1);
-		i++;
-	}
-	while (n)
-	{
-		(*format)++;
-		n /= 10;
-	}
-	return (ret);
+	if (spec == 'c' || spec == 's' || spec == 'p' || spec == 'd' || spec == 'i'
+			|| spec == 'i' || spec == 'u' || spec == 'x' || spec == 'X' || spec == '%')
+		return (1);
+	return (0);
 }

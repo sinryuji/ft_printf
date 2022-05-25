@@ -6,26 +6,33 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:34:56 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/17 15:40:13 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:39:38 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_char(va_list *ap)
+int	ft_printf_char(va_list *ap, t_flag *flag)
 {
 	char	c;
+	int		n;
+	int		ret;
 
 	c = va_arg(*ap, int);
-	return (write(1, &c, 1));
+	n = flag->width;
+	ret = 0;
+	if (flag->minus)
+	{
+		ret += write(1, &c, 1);
+		while (n-- > 1)
+			ret += write(1, " ", 1);
+	}
+	else
+	{
+		while (n-- > 1)
+			ret += write(1, " ", 1);
+		ret += write(1, &c, 1);
+	}
+	return (ret);
 }
 
-int	ft_printf_string(va_list *ap)
-{
-	char	*str;
-
-	str = va_arg(*ap, char *);
-	if (str == NULL)
-		return (write(1, "(null)", 6));
-	return (write(1, str, ft_strlen(str)));
-}

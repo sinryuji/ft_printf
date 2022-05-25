@@ -1,37 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_width.c                                  :+:      :+:    :+:   */
+/*   ft_printf_prework.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 19:42:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/25 15:48:35 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/05/25 13:40:51 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/05/25 19:29:50 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_width(char **format)
+void	prework_width(t_flag *flag, const char **format)
 {
 	int	n;
-	int	i;
-	int	ret;
 
-	n = ft_atoi(*format);
-	i = 0;
-	ret = 0;
-	if (**format < '0' || **format > '9')
-		return (0);
-	while (i < n)
+	if (**format == '-')
 	{
-		ret += write(1, " ", 1);
-		i++;
+		flag->minus = 1;
+		(*format)++;
 	}
+	n = ft_atoi(*format);
+	flag->width = n;
 	while (n)
 	{
-		(*format)++;
 		n /= 10;
+		(*format)++;
+	}	
+}
+
+void	prework_precision(t_flag *flag, const char **format)
+{
+	int	n;
+
+	if (**format == '.')
+	{
+		(*format)++;
+		if (ft_isdigit(**format))
+		{
+			flag->pre_flag = 1;
+			n = ft_atoi(*format);
+			flag->precision = n;
+			while (ft_isdigit(**format))
+				(*format)++;
+		}
+		else
+			flag->only_pre = 1;
 	}
-	return (ret);
 }
