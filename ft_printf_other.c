@@ -6,13 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:04:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/25 19:44:52 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:22:35 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_pointer(va_list *ap)
+int	ft_printf_pointer(va_list *ap, t_flag *flag)
 {
 	unsigned long	addr;
 	int				i;
@@ -37,6 +37,7 @@ int	ft_printf_pointer(va_list *ap)
 		ret += write(1, &addr_hex[i], 1);
 		i++;
 	}
+	(void)flag;
 	return (ret);
 }
 
@@ -48,13 +49,11 @@ int	ft_printf_percent(t_flag *flag)
 	if (flag->minus)
 	{
 		ret += write(1, "%", 1);
-		while (flag->width-- > 1)
-			ret += write(1, " ", 1);
+		ret += write_padding(1, flag);
 	}
 	else
 	{
-		while (flag->width-- > 1)
-			ret += write(1, " ", 1);
+		ret += write_padding(1, flag);
 		ret += write(1, "%", 1);
 	}
 	return (ret);

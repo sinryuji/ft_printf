@@ -6,32 +6,23 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 19:42:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/25 15:48:35 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/26 12:20:53 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_width(char **format)
+int	write_padding(int strlen, t_flag *flag)
 {
-	int	n;
-	int	i;
-	int	ret;
+	int ret;
+	char c;
 
-	n = ft_atoi(*format);
-	i = 0;
 	ret = 0;
-	if (**format < '0' || **format > '9')
-		return (0);
-	while (i < n)
-	{
-		ret += write(1, " ", 1);
-		i++;
-	}
-	while (n)
-	{
-		(*format)++;
-		n /= 10;
-	}
+	if (flag->zero)
+		c = '0';
+	else
+		c = ' ';
+	while (flag->width-- > strlen)
+		ret += write(1, &c, 1);
 	return (ret);
 }

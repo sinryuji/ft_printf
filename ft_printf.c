@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/25 19:42:21 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:55:16 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	select_specifier(char spec, va_list *ap, t_flag *flag)
 	else if (spec == 's')
 		ret = ft_printf_string(ap, flag);
 	else if (spec == 'p')
-		ret = ft_printf_pointer(ap);
+		ret = ft_printf_pointer(ap, flag);
 	else if (spec == 'd' || spec == 'i')
-		ret = ft_printf_decimal(ap);
+		ret = ft_printf_decimal(ap, flag);
 	else if (spec == 'u')
-		ret = ft_printf_unsigned(ap);
+		ret = ft_printf_unsigned(ap, flag);
 	else if (spec == 'x' || spec == 'X')
-		ret = ft_printf_hexa(ap, spec);
+		ret = ft_printf_hexa(ap, spec, flag);
 	else if (spec == '%')
 		ret = ft_printf_percent(flag);
 	return (ret);
@@ -64,7 +64,7 @@ int	ft_printf(const char *format, ...)
 
 //int	main()
 //{
-//	char	str = 'c';
-//	printf("printf :%5c\n", str);
-//	ft_printf("ft_printf :%5c\n", str);
+//	char	*str = "asdf";
+//	printf("%d\n", printf("printf :%10s\n", str));
+//	printf("%d\n", ft_printf("ft_printf :%10s\n", str));
 //}
