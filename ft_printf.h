@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/26 17:13:03 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:11:45 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_flag
 	int		precision;
 	int		only_pre;
 	int		num_base;
-	int		num_minus;
 	char	hexa;
 }	t_flag;
 

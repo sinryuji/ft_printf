@@ -6,17 +6,52 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/26 17:27:53 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:11:32 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static write_num(t_flag *flag, int n)
+static int write_string(char *str, t_flag *flag)
 {
-	int	ret;
+	int ret;
+	int strlen;
 
 	ret = 0;
+	strlen = ft_strlen(str);
+	if (flag->minus)
+	{
+		ret += write(1, str ,strlen);
+		ret += write_padding(strlen, flag);
+	}
+	else
+	{
+		ret += write_padding(strlen, flag);
+		ret += write(1, str, strlen);
+	}
+	return (ret);
+}
+
+static int write_num(t_flag *flag, int n)
+{
+	char	*str;
+
+	if (flag->num_base == 10)
+		str = ft_itoa_base(n, 10);
+	if (flag->num_base == 16)
+	{
+		str = ft_itoa_base(n, 16);
+		if (flag->hexa == 'x')
+		{
+			while (*str)
+			{
+				if (*str >= 'A' && *str <= 'F')
+					*str += 32;
+				str++;
+			}
+		}
+	}
+	return (write_string(str, flag));
 }
 
 int	ft_printf_decimal(va_list *ap, t_flag *flag)
@@ -25,11 +60,6 @@ int	ft_printf_decimal(va_list *ap, t_flag *flag)
 
 	n = va_arg(*ap, int);
 	flag->num_base = 10;
-	if (n < 0)
-	{
-		flag->num_minus = 1;
-		n *= -1;
-	}
 	return (write_num(flag, n));
 }
 
