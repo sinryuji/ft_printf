@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/26 21:11:45 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:25:31 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_flag
 	int		only_pre;
 	int		num_base;
 	char	hexa;
+	int		num_flag;
+	int		pre_flag;
+	int		num_minus;
 }	t_flag;
 
 /* ft_printf.c */
@@ -43,6 +46,7 @@ int		ft_printf_char(va_list *ap, t_flag *flag);
 
 /* ft_printf_string.c */
 int		ft_printf_string(va_list *ap, t_flag *flag);
+int		write_string(char *str, t_flag *flag);
 
 /* ft_printf_other.c */
 int		ft_printf_pointer(va_list *ap, t_flag *flag);

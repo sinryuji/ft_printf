@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:40:51 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/26 16:24:18 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:21:40 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	prework_width(t_flag *flag, const char **format)
 	{
 		n /= 10;
 		(*format)++;
-	}	
+	}
 }
 
 void	prework_precision(t_flag *flag, const char **format)
@@ -41,6 +41,7 @@ void	prework_precision(t_flag *flag, const char **format)
 
 	if (**format == '.')
 	{
+		flag->pre_flag = 1;
 		(*format)++;
 		if (ft_isdigit(**format))
 		{
