@@ -6,13 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/27 13:32:42 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:55:40 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//static int write_string(char *str, t_flag *flag)
+//static int print_num(char *str, t_flag *flag)
 //{
 //	int ret;
 //	int strlen;
@@ -32,16 +32,41 @@
 //	return (ret);
 //}
 
-static int write_num(t_flag *flag, int n)
+static int print_num(char *str, t_flag *flag)
+{
+	int ret;
+	int strlen;
+	int	gap;
+
+	ret = 0;
+	strlen = ft_strlen(str);
+	gap = flag->width - ft_max(strlen, flag->precision);
+	if (!flag->minus && gap > 0 && (!flag->zero || (flag->zero && flag->precision)))
+		while (gap-- > 0)
+				ret += write(1, " ", 1);
+	if (flag->num_minus)
+		ret += write(1, "-", 1);
+	if (flag->precision > 0)
+		while (flag->precision-- > strlen)
+			ret += write(1, "0", 1);
+	if (flag->zero)
+		while (gap-- > 0)
+			ret += write(1, "0", 1);
+	ret += write(1, str, strlen);
+	while (gap-- > 0)
+		ret += write(1, " ", 1);
+	return (ret);
+}
+
+static int convert_str(t_flag *flag, int n)
 {
 	char	*str;
 
-	flag->num_flag = 1;
-	if (flag->num_base == 10)
-		str = ft_itoa_base(n, 10);
-	if (flag->num_base == 16)
+	if (flag->only_pre)
+		str = "";
+	else
 	{
-		str = ft_itoa_base(n, 16);
+		str = ft_itoa_base(n, flag->num_base);
 		if (flag->hexa == 'x')
 		{
 			while (*str)
@@ -52,7 +77,7 @@ static int write_num(t_flag *flag, int n)
 			}
 		}
 	}
-	return (write_string(str, flag));
+	return (print_num(str, flag));
 }
 
 int	ft_printf_decimal(va_list *ap, t_flag *flag)
@@ -64,10 +89,10 @@ int	ft_printf_decimal(va_list *ap, t_flag *flag)
 	if (n < 0)
 	{
 		flag->num_minus = 1;
-		if (flag->pre_flag || flag->zero)
-			n *= -1;
+		n *= -1;
+		flag->width--;
 	}
-	return (write_num(flag, n));
+	return (convert_str(flag, n));
 }
 
 //int	ft_printf_decimal(va_list *ap, t_flag *flag)
@@ -102,7 +127,7 @@ int	ft_printf_unsigned(va_list *ap, t_flag *flag)
 
 	n = va_arg(*ap, unsigned int);
 	flag->num_base = 10;
-	return (write_num(flag , n));
+	return (convert_str(flag , n));
 }
 
 //int	ft_printf_unsigned(va_list *ap)
@@ -139,7 +164,7 @@ int	ft_printf_hexa(va_list *ap, char spec, t_flag *flag)
 	n = va_arg(*ap, unsigned int);
 	flag->num_base = 16;
 	flag->hexa = spec;
-	return (write_num(flag, n));
+	return (convert_str(flag, n));
 }
 
 //int	ft_printf_hexa(va_list *ap, char spec)
