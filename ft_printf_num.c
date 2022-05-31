@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/30 13:55:40 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:50:31 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static int print_num(char *str, t_flag *flag)
 				ret += write(1, " ", 1);
 	if (flag->num_minus)
 		ret += write(1, "-", 1);
+	if (flag->pointer)
+		ret += write(1, "0x", 2);
 	if (flag->precision > 0)
 		while (flag->precision-- > strlen)
 			ret += write(1, "0", 1);
@@ -58,22 +60,24 @@ static int print_num(char *str, t_flag *flag)
 	return (ret);
 }
 
-static int convert_str(t_flag *flag, int n)
+int convert_str(t_flag *flag, long long n)
 {
 	char	*str;
+	int		i;
 
+	i = 0;
 	if (flag->only_pre)
 		str = "";
 	else
 	{
 		str = ft_itoa_base(n, flag->num_base);
-		if (flag->hexa == 'x')
+		if (flag->hexa == 'X')
 		{
-			while (*str)
+			while (str[i])
 			{
-				if (*str >= 'A' && *str <= 'F')
-					*str += 32;
-				str++;
+				if (str[i] >= 'a' && str[i] <= 'f')
+					str[i] -= 32;
+				i++;
 			}
 		}
 	}

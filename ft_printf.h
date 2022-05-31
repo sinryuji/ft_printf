@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/27 16:54:10 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:41:32 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ typedef struct s_flag
 	int		precision;
 	int		only_pre;
 	int		num_base;
-	char	hexa;
-	int		num_flag;
-	int		pre_flag;
 	int		num_minus;
+	char	hexa;
+	int		pointer;
 }	t_flag;
 
 /* ft_printf.c */
@@ -55,6 +54,7 @@ int		ft_printf_percent(t_flag *flag);
 int		ft_printf_decimal(va_list *ap, t_flag *flag);
 int		ft_printf_unsigned(va_list *ap, t_flag *flag);
 int		ft_printf_hexa(va_list *ap, char spec, t_flag *flag);
+int		convert_str(t_flag *flag, long long n);
 
 /* ft_printf_width.c */
 int		write_padding(int strlen, t_flag *flag);
