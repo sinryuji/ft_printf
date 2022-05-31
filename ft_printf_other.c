@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:04:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/31 17:51:22 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:37:20 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,23 @@ int	ft_printf_pointer(va_list *ap, t_flag *flag)
 }
 //int	ft_printf_pointer(va_list *ap, t_flag *flag)
 //{
-//	unsigned long	addr;
-//	int				i;
-//	char			addr_hex[HEX_SIZE];
-//	int				ret;
+//	unsigned long	n;
+//	char			*str;
+//	int				strlen;
 //
-//	addr = (unsigned long)va_arg(*ap, void *);
-//	i = HEX_SIZE;
-//	while (addr > 0)
+//	n = (unsigned long)va_arg(*ap, void *);
+//	strlen = ft_ullen_base(n, 16) + 2;
+//	str = malloc(sizeof(char) * (strlen + 1));
+//	str[0] = '0';
+//	str[1] = 'x';
+//	str[strlen--] = '\0';
+//	while (strlen > 1)
 //	{
-//		addr_hex[--i] = HEX_LOWER[addr % HEX_SIZE];
-//		addr /= HEX_SIZE;
+//		str[strlen] = HEX_LOWER[n % 16];
+//		n /= 16;
+//		strlen--;
 //	}
-//	ret = write(1, "0x", 2);
-//	if (i == HEX_SIZE)
-//	{
-//		ret += write(1, "0", 1);
-//		return (ret);
-//	}
-//	while (i < HEX_SIZE)
-//	{
-//		ret += write(1, &addr_hex[i], 1);
-//		i++;
-//	}
-//	(void)flag;
-//	return (ret);
+//	return (print_num(str, flag));
 //}
 
 int	ft_printf_percent(t_flag *flag)

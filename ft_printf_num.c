@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/31 18:15:16 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:44:40 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 //	return (ret);
 //}
 
-static int print_num(char *str, t_flag *flag)
+int print_num(char *str, t_flag *flag)
 {
 	int ret;
 	int strlen;
@@ -57,6 +57,7 @@ static int print_num(char *str, t_flag *flag)
 	ret += write(1, str, strlen);
 	while (gap-- > 0)
 		ret += write(1, " ", 1);
+	free(str);
 	return (ret);
 }
 
@@ -64,13 +65,17 @@ int convert_str(t_flag *flag, long long n)
 {
 	char	*str;
 	int		i;
+	int		ret;
 
 	i = 0;
 	if (flag->only_pre)
-		str = "";
+		str = ft_strdup("");
 	else
 	{
-		str = ft_itoa_base(n, flag->num_base);
+		if (flag->pointer)
+			str = ft_ultoa_base(n, flag->num_base);
+		else
+			str = ft_itoa_base(n, flag->num_base);
 		if (flag->hexa == 'X')
 		{
 			while (str[i])
@@ -81,12 +86,13 @@ int convert_str(t_flag *flag, long long n)
 			}
 		}
 	}
-	return (print_num(str, flag));
+	ret = print_num(str, flag);
+	return (ret);
 }
 
 int	ft_printf_decimal(va_list *ap, t_flag *flag)
 {
-	int	n;
+	long	n;
 
 	n = va_arg(*ap, int);
 	flag->num_base = 10;
