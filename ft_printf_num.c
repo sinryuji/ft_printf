@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/31 17:50:31 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/31 18:15:16 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int print_num(char *str, t_flag *flag)
 	if (!flag->minus && gap > 0 && (!flag->zero || (flag->zero && flag->precision)))
 		while (gap-- > 0)
 				ret += write(1, " ", 1);
-	if (flag->num_minus)
+	if (flag->num_minus && !flag->macro)
 		ret += write(1, "-", 1);
 	if (flag->pointer)
 		ret += write(1, "0x", 2);
@@ -96,6 +96,8 @@ int	ft_printf_decimal(va_list *ap, t_flag *flag)
 		n *= -1;
 		flag->width--;
 	}
+	if (n == INT_MAX || n == INT_MIN)
+		flag->macro = 1; 
 	return (convert_str(flag, n));
 }
 

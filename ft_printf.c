@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/27 13:19:47 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/05/31 18:18:45 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	ret = 0;
 	flag = malloc(sizeof(t_flag));
-	ft_memset(flag, 0, sizeof(t_flag));
 	while (*format)
 	{
+		ft_memset(flag, 0, sizeof(t_flag));
 		if (*format == '%')
 		{
 			format++;
@@ -64,7 +64,6 @@ int	ft_printf(const char *format, ...)
 
 //int	main()
 //{
-//	char	*str = "asdf";
-//	printf("%d\n", printf("printf :%10s\n", str));
-//	printf("%d\n", ft_printf("ft_printf :%10s\n", str));
+//	printf("%d\n", printf("printf :%x\n", INT_MIN));
+//	printf("%d\n", ft_printf("ft_printf :%x\n", INT_MIN));
 //}
