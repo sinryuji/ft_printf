@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:40:51 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/01 13:14:32 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:41:19 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,24 @@ void	prework_precision(t_flag *flag, const char **format)
 		}
 		else
 			flag->only_pre = 1;
+	}
+}
+
+void	prework_other(t_flag *flag, const char **format)
+{
+	if (**format == '#')
+	{
+		flag->hash = 1;
+		(*format)++;
+	}
+	while (**format == '+')
+	{
+		flag->plus = 1;
+		(*format)++;
+	}
+	while (**format == ' ')
+	{
+		flag->space = 1;
+		(*format)++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/01 13:25:48 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:24:48 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			prework_width(flag, &format);
+			prework_other(flag, &format);
 			prework_precision(flag, &format);
 			ret += select_specifier(*format, &ap, flag);
 		}
