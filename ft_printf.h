@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/31 23:59:23 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:13:54 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_flag
 	char	hexa;
 	int		pointer;
 	int		macro;
+	int		pre_flag;
 }	t_flag;
 
 /* ft_printf.c */

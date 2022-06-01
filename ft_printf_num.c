@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/01 00:44:40 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:23:37 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int print_num(char *str, t_flag *flag)
 	ret = 0;
 	strlen = ft_strlen(str);
 	gap = flag->width - ft_max(strlen, flag->precision);
-	if (!flag->minus && gap > 0 && (!flag->zero || (flag->zero && flag->precision)))
+	if (!flag->minus && gap > 0 && (!flag->zero || (flag->zero && flag->pre_flag)))
 		while (gap-- > 0)
 				ret += write(1, " ", 1);
 	if (flag->num_minus && !flag->macro)
@@ -68,7 +68,7 @@ int convert_str(t_flag *flag, long long n)
 	int		ret;
 
 	i = 0;
-	if (flag->only_pre)
+	if (flag->only_pre && (!flag->num_base || !n))
 		str = ft_strdup("");
 	else
 	{
