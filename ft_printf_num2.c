@@ -6,13 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 18:12:47 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/01 18:56:34 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:36:06 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print_num_sign(t_flag *flag)
+static int	print_num_sign(t_flag *flag, char *str)
 {
 	int	ret;
 
@@ -21,7 +21,7 @@ static int	print_num_sign(t_flag *flag)
 		ret += write(1, "-", 1);
 	else if (flag->pointer)
 		ret += write(1, "0x", 2);
-	else if (flag->hash && !flag->num_zero)
+	else if (flag->hash && *str != '0')
 	{
 		if (flag->hexa == 'x')
 			ret += write(1, "0x", 2);
@@ -35,19 +35,20 @@ static int	print_num_sign(t_flag *flag)
 	return (ret);
 }
 
-int print_num(char *str, t_flag *flag)
+static int	print_num(char *str, t_flag *flag)
 {
-	int ret;
-	int strlen;
+	int	ret;
+	int	strlen;
 	int	gap;
 
 	ret = 0;
 	strlen = ft_strlen(str);
 	gap = flag->width - ft_max(strlen, flag->precision);
-	if (!flag->minus && gap > 0 && (!flag->zero || (flag->zero && flag->pre_flag)))
+	if (!flag->minus && gap > 0
+		&& (!flag->zero || (flag->zero && flag->pre_flag)))
 		while (gap-- > 0)
 				ret += write(1, " ", 1);
-	ret += print_num_sign(flag);
+	ret += print_num_sign(flag, str);
 	if (flag->precision > 0)
 		while (flag->precision-- > strlen)
 			ret += write(1, "0", 1);
@@ -61,15 +62,13 @@ int print_num(char *str, t_flag *flag)
 	return (ret);
 }
 
-int convert_str(t_flag *flag, long long n)
+int	convert_str(t_flag *flag, long long n)
 {
 	char	*str;
 	int		i;
 	int		ret;
 
 	i = 0;
-	if (n == 0)
-		flag->num_zero = 1;
 	if (flag->only_pre && (!flag->num_base || !n))
 		str = ft_strdup("");
 	else
