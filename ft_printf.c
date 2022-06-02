@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/01 18:24:48 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/02 15:34:38 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	select_specifier(char spec, va_list *ap, t_flag *flag)
 		ret = ft_printf_hexa(ap, spec, flag);
 	else if (spec == '%')
 		ret = ft_printf_percent(flag);
+	else
+		flag->error = 1;;
 	return (ret);
 }
 
@@ -57,7 +59,12 @@ int	ft_printf(const char *format, ...)
 		else
 			ret += write(1, format, 1);
 		format++;
-	}		
+		if (flag->error)
+		{
+			ret = -1;
+			break;
+		}
+	}
 	va_end(ap);
 	free(flag);
 	return (ret);

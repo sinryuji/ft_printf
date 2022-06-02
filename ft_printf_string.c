@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:39:46 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/05/27 16:53:36 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/02 15:49:15 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,68 @@
 //	return (ret);
 //}
 
+int	write_padding(int strlen, t_flag *flag)
+{
+	int ret;
+	char c;
+
+	ret = 0;
+	if (flag->zero)
+		c = '0';
+	else
+		c = ' ';
+//	if (flag->num_flag && flag->precision > strlen)
+//	{
+//		if (flag->num_minus || flag->zero)
+//			ret += write(1, "-", 1);
+//		while (flag->precision-- > strlen)
+//			ret += write(1, &c, 1);
+//	}
+//	else
+//	{
+		while (flag->width-- > strlen)
+			ret += write(1, &c, 1);
+//	}
+	return (ret);
+}
+
+int	ft_printf_char(va_list *ap, t_flag *flag)
+{
+	char	c;
+	int		ret;
+
+	c = va_arg(*ap, int);
+	ret = 0;
+	if (flag->minus)
+	{
+		ret += write(1, &c ,1);
+		ret += write_padding(1, flag);
+	}
+	else
+	{
+		ret += write_padding(1, flag);
+		ret += write(1, &c, 1);
+	}
+	return (ret);
+}
+
+int	ft_printf_percent(t_flag *flag)
+{
+	int	ret;
+
+	ret = 0;
+	if (flag->minus)
+	{
+		ret += write(1, "%", 1);
+		ret += write_padding(1, flag);
+	}
+	else
+	{
+		ret += write_padding(1, flag);
+		ret += write(1, "%", 1);
+	}
+	return (ret);
+}
 
 int	ft_printf_string(va_list *ap, t_flag *flag)
 {

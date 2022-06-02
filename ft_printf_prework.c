@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:40:51 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/01 18:41:19 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/02 15:36:23 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	prework_width(t_flag *flag, const char **format)
 	if (flag->minus && flag->zero)
 		flag->zero = 0;	
 	n = ft_atoi(*format);
+	if (n < 0)
+		flag->error = 1;				
 	flag->width = n;
 	while (n)
 	{
@@ -49,6 +51,8 @@ void	prework_precision(t_flag *flag, const char **format)
 			flag->precision = n;
 			if (!n)
 				flag->only_pre = 1;
+			if (n < 0)
+				flag->error = 1;				
 			while (ft_isdigit(**format))
 				(*format)++;
 		}
