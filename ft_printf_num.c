@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/02 16:14:05 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:28:08 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	ft_printf_decimal(va_list *ap, t_flag *flag)
 		n *= -1;
 		flag->width--;
 	}
-	if (n == INT_MAX || n == INT_MIN)
-		flag->macro = 1;
 	return (convert_str(flag, n));
 }
 

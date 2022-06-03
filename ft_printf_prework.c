@@ -6,35 +6,43 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:40:51 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/02 16:12:59 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/03 23:11:32 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	prework_width(t_flag *flag, const char **format)
+void	prework_flag(t_flag *flag, const char **format)
 {
-	int	n;
-
-	while (**format == '-' || **format == '0')
+	while (**format == '-' || **format == '0' || **format == '#'
+		|| **format == '+' || **format == ' ')
 	{
 		if (**format == '-')
 			flag->minus = 1;
-		else
+		else if (**format == '0')
 			flag->zero = 1;
+		else if (**format == '#')
+			flag->hash = 1;
+		else if (**format == '+')
+			flag->plus = 1;
+		else if (**format == ' ')
+			flag->space = 1;
 		(*format)++;
 	}
 	if (flag->minus && flag->zero)
 		flag->zero = 0;
+}
+
+void	prework_width(t_flag *flag, const char **format)
+{
+	int	n;
+
 	n = ft_atoi(*format);
 	if (n < 0)
 		flag->error = 1;
 	flag->width = n;
-	while (n)
-	{
-		n /= 10;
+	while (ft_isdigit(**format))
 		(*format)++;
-	}
 }
 
 void	prework_precision(t_flag *flag, const char **format)
@@ -49,33 +57,10 @@ void	prework_precision(t_flag *flag, const char **format)
 		{
 			n = ft_atoi(*format);
 			flag->precision = n;
-			if (!n)
-				flag->only_pre = 1;
 			if (n < 0)
 				flag->error = 1;
 			while (ft_isdigit(**format))
 				(*format)++;
 		}
-		else
-			flag->only_pre = 1;
-	}
-}
-
-void	prework_other(t_flag *flag, const char **format)
-{
-	if (**format == '#')
-	{
-		flag->hash = 1;
-		(*format)++;
-	}
-	while (**format == '+')
-	{
-		flag->plus = 1;
-		(*format)++;
-	}
-	while (**format == ' ')
-	{
-		flag->space = 1;
-		(*format)++;
 	}
 }

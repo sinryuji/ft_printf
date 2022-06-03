@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/02 16:57:38 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:15:26 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static int	ft_printf_processing(const char *format, va_list ap, t_flag *flag)
 		if (*format == '%')
 		{
 			format++;
+			prework_flag(flag, &format);
 			prework_width(flag, &format);
-			prework_other(flag, &format);
 			prework_precision(flag, &format);
 			ret += select_specifier(*format, &ap, flag);
 		}
@@ -77,9 +77,3 @@ int	ft_printf(const char *format, ...)
 	free(flag);
 	return (ret);
 }
-
-//int	main()
-//{
-//	printf("%d\n", printf("printf :%.0d\n", 420000));
-//	printf("%d\n", ft_printf("ft_printf :%.0d\n", 420000));
-//}

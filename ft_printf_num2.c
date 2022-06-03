@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 18:12:47 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/02 16:36:06 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/03 23:11:22 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	print_num_sign(t_flag *flag, char *str)
 	int	ret;
 
 	ret = 0;
-	if (flag->num_minus && (!flag->macro || flag->space))
+	if (flag->num_minus)
 		ret += write(1, "-", 1);
 	else if (flag->pointer)
 		ret += write(1, "0x", 2);
@@ -44,8 +44,7 @@ static int	print_num(char *str, t_flag *flag)
 	ret = 0;
 	strlen = ft_strlen(str);
 	gap = flag->width - ft_max(strlen, flag->precision);
-	if (!flag->minus && gap > 0
-		&& (!flag->zero || (flag->zero && flag->pre_flag)))
+	if (!flag->minus && (!flag->zero || (flag->zero && flag->pre_flag)))
 		while (gap-- > 0)
 				ret += write(1, " ", 1);
 	ret += print_num_sign(flag, str);
@@ -66,10 +65,9 @@ int	convert_str(t_flag *flag, long long n)
 {
 	char	*str;
 	int		i;
-	int		ret;
 
 	i = 0;
-	if (flag->only_pre && (!flag->num_base || !n))
+	if (flag->pre_flag && !flag->precision && !n)
 		str = ft_strdup("");
 	else
 	{
@@ -81,12 +79,10 @@ int	convert_str(t_flag *flag, long long n)
 		{
 			while (str[i])
 			{
-				if (str[i] >= 'a' && str[i] <= 'f')
-					str[i] -= 32;
+				str[i] = ft_toupper(str[i]);
 				i++;
 			}
 		}
 	}
-	ret = print_num(str, flag);
-	return (ret);
+	return (print_num(str, flag));
 }

@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/02 16:36:51 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/03 22:57:22 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 # include "libft/libft.h"
-
-# define HEX_LOWER "0123456789abcdef"
-# define HEX_UPPER "0123456789ABCDEF"
-# define HEX_SIZE 16
 
 typedef struct s_flag
 {
@@ -29,12 +24,10 @@ typedef struct s_flag
 	int		minus;
 	int		zero;
 	int		precision;
-	int		only_pre;
 	int		num_base;
 	int		num_minus;
 	char	hexa;
 	int		pointer;
-	int		macro;
 	int		pre_flag;
 	int		hash;
 	int		space;
@@ -60,8 +53,8 @@ int		ft_printf_pointer(va_list *ap, t_flag *flag);
 int		convert_str(t_flag *flag, long long n);
 
 /* ft_printf_prework.c */
+void	prework_flag(t_flag *flag, const char **format);
 void	prework_width(t_flag *flag, const char **format);
 void	prework_precision(t_flag *flag, const char **format);
-void	prework_other(t_flag *flag, const char **format);
 
 #endif

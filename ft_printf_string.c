@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:39:46 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/02 16:16:13 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/03 22:56:53 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,9 @@ int	ft_printf_string(va_list *ap, t_flag *flag)
 	str = va_arg(*ap, char *);
 	if (str == NULL)
 		str = "(null)";
-	if (flag->only_pre)
-		str = "";
 	ret = 0;
 	strlen = ft_strlen(str);
-	if (flag->precision < strlen && flag->precision > 0)
+	if (flag->precision < strlen && flag->pre_flag)
 		strlen = flag->precision;
 	if (flag->minus)
 	{
