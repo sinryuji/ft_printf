@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/03 22:57:22 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/06/08 15:37:02 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ typedef struct s_flag
 int		ft_printf(const char *format, ...);
 
 /* ft_printf_string.c */
-int		ft_printf_string(va_list *ap, t_flag *flag);
-int		ft_printf_char(va_list *ap, t_flag *flag);
+int		ft_printf_string(va_list ap, t_flag *flag);
+int		ft_printf_char(va_list ap, t_flag *flag);
 int		ft_printf_percent(t_flag *flag);
 
 /* ft_printf_num.c */
-int		ft_printf_decimal(va_list *ap, t_flag *flag);
-int		ft_printf_unsigned(va_list *ap, t_flag *flag);
-int		ft_printf_hexa(va_list *ap, char spec, t_flag *flag);
-int		ft_printf_pointer(va_list *ap, t_flag *flag);
+int		ft_printf_decimal(va_list ap, t_flag *flag);
+int		ft_printf_unsigned(va_list ap, t_flag *flag);
+int		ft_printf_hexa(va_list ap, char spec, t_flag *flag);
+int		ft_printf_pointer(va_list ap, t_flag *flag);
 
 /* ft_printf_num2.c */
 int		convert_str(t_flag *flag, long long n);
