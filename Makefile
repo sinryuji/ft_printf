@@ -6,7 +6,7 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 22:37:19 by hyeongki          #+#    #+#              #
-#    Updated: 2022/06/02 15:52:12 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/06/21 18:35:34 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ clean :
 	$(RM) $(OBJS)
 
 fclean : clean
-	$(RM) $(LIBFT)/$(LIBFT)
+	$(RM) $(LIBFTDIR)/$(LIBFT)
 	$(RM) $(NAME)
 
 re : fclean all
