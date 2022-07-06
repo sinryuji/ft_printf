@@ -6,11 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:40:51 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/03 23:11:32 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:44:57 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 void	prework_flag(t_flag *flag, const char **format)
 {
