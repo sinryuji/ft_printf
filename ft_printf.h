@@ -6,15 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:01:31 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/08 15:37:02 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:18:22 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdlib.h>
-# include <unistd.h>
 # include <stdarg.h>
 # include "libft/libft.h"
 
