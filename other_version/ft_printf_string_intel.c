@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:39:46 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/20 23:12:13 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:45:15 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static int	write_padding(int strlen, t_flag *flag)
 	return (ret);
 }
 
-int	ft_printf_char(va_list *ap, t_flag *flag)
+int	ft_printf_char(va_list ap, t_flag *flag)
 {
 	char	c;
 	int		ret;
 
-	c = va_arg(*ap, int);
+	c = va_arg(ap, int);
 	ret = 0;
 	if (flag->minus)
 	{
@@ -67,13 +67,13 @@ int	ft_printf_percent(t_flag *flag)
 	return (ret);
 }
 
-int	ft_printf_string(va_list *ap, t_flag *flag)
+int	ft_printf_string(va_list ap, t_flag *flag)
 {
 	char	*str;
 	int		ret;	
 	int		strlen;
 
-	str = va_arg(*ap, char *);
+	str = va_arg(ap, char *);
 	if (str == NULL)
 		str = "(null)";
 	ret = 0;
