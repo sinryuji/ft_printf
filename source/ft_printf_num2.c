@@ -6,12 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 18:12:47 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/06 18:44:32 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:48:02 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../include/ft_printf.h"
+#include "../lib/libft/include/libft.h"
 #include <unistd.h>
 
 static int	print_num_sign(t_flag *flag, char *str)

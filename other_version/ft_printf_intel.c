@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_intel.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:18 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/06 18:44:03 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:55:02 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../include/ft_printf.h"
+#include "../lib/libft/include/libft.h"
 #include <unistd.h>
 
 static int	select_specifier(char spec, va_list ap, t_flag *flag)

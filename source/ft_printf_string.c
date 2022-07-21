@@ -6,12 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:39:46 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/20 23:12:13 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:48:29 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../include/ft_printf.h"
+#include "../lib/libft/include/libft.h"
 #include <unistd.h>
 
 static int	write_padding(int strlen, t_flag *flag)

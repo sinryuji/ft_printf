@@ -21,6 +21,7 @@ ft_printf
 pft/
 ft_printf_tester/
 printfTester/
+tester/
 
 # Swap
 *.swp

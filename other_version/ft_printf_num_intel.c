@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_num.c                                    :+:      :+:    :+:   */
+/*   ft_printf_num_intel.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:12:41 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/06/08 15:38:01 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:55:16 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_printf_decimal(va_list ap, t_flag *flag)
 {
