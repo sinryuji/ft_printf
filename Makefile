@@ -6,12 +6,12 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 22:37:19 by hyeongki          #+#    #+#              #
-#    Updated: 2022/07/21 19:49:01 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/07/24 20:16:58 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFALGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 SRCS_PATH = ./source/
 SRCS_NAME = ft_printf.c ft_printf_num.c ft_printf_num2.c ft_printf_prework.c ft_printf_string.c
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
@@ -23,7 +23,7 @@ LIBFT_PATH = ./lib/libft/
 LIBFT = libft.a
 
 %.o : %.c
-	$(CC) $(CFALGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(LIBFT_PATH)
