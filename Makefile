@@ -6,7 +6,7 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 22:37:19 by hyeongki          #+#    #+#              #
-#    Updated: 2022/07/24 20:16:58 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/07/24 20:23:13 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT = libft.a
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	$(MAKE) -C $(LIBFT_PATH)
+	$(MAKE) bonus -C $(LIBFT_PATH)
 	cp $(LIBFT_PATH)$(LIBFT) $(NAME)
 	$(AR) $@ $^
 
