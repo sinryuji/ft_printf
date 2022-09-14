@@ -6,7 +6,7 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 22:37:19 by hyeongki          #+#    #+#              #
-#    Updated: 2022/07/24 20:23:13 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/09/14 16:25:31 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,23 +22,32 @@ NAME = libftprintf.a
 LIBFT_PATH = ./lib/libft/
 LIBFT = libft.a
 
+# Colors
+GREEN = \x1b[32m
+RED = \x1b[31m
+RESET = \x1b[0m
+
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
 
 $(NAME) : $(OBJS)
-	$(MAKE) bonus -C $(LIBFT_PATH)
-	cp $(LIBFT_PATH)$(LIBFT) $(NAME)
-	$(AR) $@ $^
+	@$(MAKE) bonus -C $(LIBFT_PATH)
+	@cp $(LIBFT_PATH)$(LIBFT) $(NAME)
+	@$(AR) $@ $^
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 all : $(NAME)
 
 clean : 
-	$(MAKE) clean -C $(LIBFT_PATH)
-	$(RM) $(OBJS)
+	@$(MAKE) clean -C $(LIBFT_PATH)
+	@$(RM) $(OBJS)
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean : clean
-	$(RM) $(LIBFT_PATH)$(LIBFT)
-	$(RM) $(NAME)
+	@$(RM) $(LIBFT_PATH)$(LIBFT)
+	@$(RM) $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re : fclean all
 
